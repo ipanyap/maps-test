@@ -5,6 +5,9 @@ import React, { Component } from 'react';
 export default class SimpleMap extends Component {
 	constructor(props){
         super(props);
+		
+		this.marker = [];
+		this.addMarker = this.addMarker.bind(this);
     };
 	
 	componentDidMount() {
@@ -15,6 +18,15 @@ export default class SimpleMap extends Component {
 			},
 			zoom: 11
 		});
+		
+		google.maps.event.addListener(this.map, 'click', this.addMarker);
+	};
+	
+	addMarker(event) {
+		this.marker[this.marker.length] = new google.maps.Marker({
+			position: event.latLng,
+			map: this.map
+        });
 	};
   
 	render() {
@@ -25,7 +37,7 @@ export default class SimpleMap extends Component {
 		};
 		
 		return (
-			<div ref="map" style={mapStyle} ref="map"></div>
+			<div ref="map" style={mapStyle}></div>
 		);
 	};
 }
