@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SimpleMap from './components/simple-map.js';
+import IndexPage from './components/index-page.js'
 
 window.onload = () => {
 	ReactDOM.render(
-		<div>
-			<SimpleMap/>
-		</div>,
+		<IndexPage />,
 		document.getElementById('root')
 	);
 };
