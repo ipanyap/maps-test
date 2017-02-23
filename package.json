@@ -2,11 +2,11 @@
   "name": "maps-test",
   "version": "1.0.0",
   "description": "Simple project using Google Maps",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node_modules/.bin/webpack --config ./webpack.config.js --progress --profile --colors",
-    "start": "node index --loadwebpack=true"
+    "start": "node_modules/.bin/babel-node src/server.js"
   },
   "author": "Ivan Jayadi",
   "license": "ISC",
@@ -18,10 +18,13 @@
     "ejs": "^2.5.6",
     "express": "^4.14.0",
     "google-map-react": "^0.21.0",
+    "pg": "^6.1.2",
+    "pg-hstore": "^2.3.2",
     "react": "^15.3.2",
     "react-dom": "^15.3.0",
-	"react-pure-render": "^1.0.2",
-    "react-router": "^2.8.1"
+    "react-pure-render": "^1.0.2",
+    "react-router": "^2.8.1",
+    "sequelize": "^3.30.2"
   },
   "devDependencies": {
     "babel-loader": "^6.2.5",

@@ -7,14 +7,9 @@
 	<link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><%- markup -%></div>
 	
-	<script>
-		function initMap() {
-			console.log("Google maps loaded successfully!");
-		}
-	</script>
 	<script src="./js/bundle.js"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= key %>"></script>
   </body>
 </html>
