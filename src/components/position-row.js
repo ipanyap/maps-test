@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
+/** Class representing each row of the position table. */
 export default class PositionRow extends Component {
+	/**
+     * Create a row displaying marker's position.
+     * @param {JSON} props - The props data.
+     */
 	constructor(props) {
 		super(props);
 		
@@ -9,6 +14,9 @@ export default class PositionRow extends Component {
 		this.handleDelete = this.handleDelete.bind(this);
 	};
 	
+	/**
+     * Create an event to be fired when button 'Set Origin' is clicked.
+     */
 	handleOrigin() {
 		var originEvent = {
 			type: 'origin',
@@ -17,6 +25,9 @@ export default class PositionRow extends Component {
 		this.props.onChange(originEvent);
 	};
 	
+	/**
+     * Create an event to be fired when button 'Set Destination' is clicked.
+     */
 	handleDestination() {
 		var destinationEvent = {
 			type: 'destination',
@@ -25,6 +36,9 @@ export default class PositionRow extends Component {
 		this.props.onChange(destinationEvent);
 	};
 	
+	/**
+     * Create an event to be fired when button 'Delete' is clicked.
+     */
 	handleDelete() {
 		var deleteEvent = {
 			type: 'delete',
@@ -33,6 +47,9 @@ export default class PositionRow extends Component {
 		this.props.onChange(deleteEvent);
 	};
 	
+	/**
+     * Render the row.
+     */
 	render() {
 		const spanStyle = {
 			float: 'left',

@@ -2,7 +2,12 @@
 
 import React, { Component } from 'react';
 
+/** Class representing the map powered by Google Maps API. */
 export default class SimpleMap extends Component {
+	/**
+     * Create the map.
+     * @param {JSON} props - The props data.
+     */
 	constructor(props){
         super(props);
 		
@@ -14,6 +19,9 @@ export default class SimpleMap extends Component {
 		this.calculateNewRoute = this.calculateNewRoute.bind(this);
     };
 	
+	/**
+     * Do things when the component has been mounted, such as init map, add listeners, and request list of markers from database.
+     */
 	componentDidMount() {
 		this.map = new google.maps.Map(this.refs.map, {
 			center: {
@@ -47,6 +55,10 @@ export default class SimpleMap extends Component {
 		});
 	};
 	
+	/**
+     * Place a marker in the clicked location in the map and update database.
+	 * @param {JSON} event - The click event.
+     */
 	putMarker(event) {
 		this.axios.post('/add', {
 			lat: event.latLng.lat(),
@@ -58,6 +70,10 @@ export default class SimpleMap extends Component {
 		});
 	};
 	
+	/**
+     * Add a marker in a location in the map, called when user create new marker as well as when the markers from database are loaded.
+	 * @param {JSON} event - The map event.
+     */
 	addMarker(event) {
 		var marker = new google.maps.Marker({
 			position: event.latLng,
@@ -72,6 +88,10 @@ export default class SimpleMap extends Component {
 		this.handleAddMarker(event.latLng);
 	};
 	
+	/**
+     * Create an event to be fired when new marker is created.
+	 * @param {JSON} position - The position of new marker.
+     */
 	handleAddMarker(position) {
 		var additionEvent = {
 			type: 'add',
@@ -80,6 +100,9 @@ export default class SimpleMap extends Component {
 		this.props.onChange(additionEvent);
 	};
 	
+	/**
+     * Calculate route between two markers.
+     */
 	calculateNewRoute() {
 		var request = {
 			origin: this.props.data.origin,
@@ -99,7 +122,10 @@ export default class SimpleMap extends Component {
 		}
 		this.props.onChange(doneEvent);
 	};
-  
+	
+	/**
+     * Render the map.
+     */
 	render() {
 		const mapStyle = {
 			//flex: 1,

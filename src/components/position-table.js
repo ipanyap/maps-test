@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import PositionRow from './position-row';
 
+/** Class representing the position table. */
 export default class PositionTable extends Component {
+	/**
+     * Create a table displaying all marker's positions.
+     * @param {JSON} props - The props data.
+     */
 	constructor(props) {
 		super(props);
 	};
 	
+	/**
+     * Render the table.
+     */
 	render() {
 		/*const listStyle = {
 			flex: 2,

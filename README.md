@@ -18,6 +18,14 @@
 4. Run 'npm run build'
 
 
+## How to setup database
+
+
+1. Create a database with PostgreSQL
+
+2. Run the script 'src/data/init.sql'
+
+
 ## How to run
 
 
@@ -40,4 +48,4 @@
 5. Click 'Calculate Route' to calculate direction from origin point to destination point
 
 
---END--
+Enjoy!

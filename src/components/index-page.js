@@ -3,7 +3,12 @@ import SimpleMap from './simple-map';
 import PositionTable from './position-table';
 import RouteForm from './route-form';
 
+/** Class representing the whole index page. */
 export default class IndexPage extends Component {
+	/**
+     * Create an index page.
+     * @param {JSON} props - The props data.
+     */
 	constructor(props) {
 		super(props);
 		
@@ -19,6 +24,10 @@ export default class IndexPage extends Component {
 		this.handleRouteEvent = this.handleRouteEvent.bind(this);
 	};
 	
+	/**
+     * Process map events such as: add, delete marker, set origin/destination, and route.
+     * @param {JSON} e -s The event object.
+     */
 	handleMapEvent(e) {
 		if(e.type === 'add') {
 			this.setState((prevState, props) => ({
@@ -60,10 +69,16 @@ export default class IndexPage extends Component {
 		}
 	};
 	
+	/**
+     * Set the route state to true, causing the maps API to calculate direction.
+     */
 	handleRouteEvent() {
 		this.setState({ newRoute: true });
 	};
 	
+	/**
+     * Render the page.
+     */
 	render() {
 		const state = this.state;
 		const places = this.state.places;
