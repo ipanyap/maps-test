@@ -34,9 +34,14 @@ export default class PositionRow extends Component {
 	};
 	
 	render() {
+		const spanStyle = {
+			float: 'left',
+			width: 500
+		};
+		
 		return (
 			<li>
-				{this.props.position.lat}, {this.props.position.lng}
+				<span style={spanStyle}>lat: {this.props.position.lat}, lng: {this.props.position.lng}</span>
 				<button onClick={this.handleOrigin}>Set Origin</button>
 				<button onClick={this.handleDestination}>Set Destination</button>
 				<button onClick={this.handleDelete}>Delete</button>

@@ -7,12 +7,15 @@ export default class PositionTable extends Component {
 	};
 	
 	render() {
-		const listStyle = {
+		/*const listStyle = {
 			flex: 2,
 			height: 200,
-			marginRight: 200,
-			overflowY: 'scroll'
-		};
+			margin: '0px 250px 0px 0px',
+			overflowY: 'scroll',
+			//display: 'inline-block',
+			backgroundColor: '#EEEEEE',
+			border: '1px solid black'
+		};*/
 		
 		const positions = this.props.positions;
 		const list = positions.map((position) =>
@@ -20,7 +23,7 @@ export default class PositionTable extends Component {
 		);
 		
 		return(
-			<ul style={listStyle}>
+			<ul>
 				{list}
 			</ul>
 		);

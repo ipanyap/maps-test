@@ -7,10 +7,12 @@ export default class RouteForm extends Component {
 	
 	render() {
 		const formStyle = {
-			position: 'relative',
-			width: 200,
-			right: 0,
-			height: 100
+			float: 'left',
+			maxWidth: 200,
+			height: 200,
+			margin: '0px',
+			padding: '1px 5px',
+			backgroundColor: '#B0C4DE'
 		};
 		
 		const data = this.props.data;
@@ -18,7 +20,7 @@ export default class RouteForm extends Component {
 		const destination = (data.destination === null) ? '' : (data.destination.lat + ',' + data.destination.lng);
 		
 		return (
-			<fieldset style={formStyle}>
+			<div style={formStyle}>
 				<label>
 					Origin:
 					<input name="origin" type="text" value={origin} />
@@ -28,7 +30,7 @@ export default class RouteForm extends Component {
 					<input name="destination" type="text" value={destination} />
 				</label>
 				<input type="submit" value="Calculate Route!" onClick={this.props.onClick} />
-			</fieldset>
+			</div>
 		);
 	};
 }

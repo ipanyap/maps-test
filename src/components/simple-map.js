@@ -102,9 +102,11 @@ export default class SimpleMap extends Component {
   
 	render() {
 		const mapStyle = {
-			flex: 1,
-			height: 400,
-			border: '1px solid black'
+			//flex: 1,
+			padding: 1,
+			height: 450,
+			backgroundColor: 'gray',
+			clear: 'left'
 		};
 		
 		const positions = this.props.data.places;

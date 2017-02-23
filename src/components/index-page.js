@@ -73,19 +73,21 @@ export default class IndexPage extends Component {
 			destination: this.state.destination
 		};
 		
-		const bottomStyle = {
-			flex: 1,
-			flexDirection: 'row',
+		const articleStyle = {
 			height: 200,
-			border: '1px solid black',
+			margin: '0px 0px 0px 200px',
+			padding: '1px',
+			borderLeft: '1px solid gray',
+			backgroundColor: '#EEEEEE',
+			overflowY: 'scroll'
 		};
 		
 		return (
 			<div>
 				<SimpleMap data={state} onChange={this.handleMapEvent} />
-				<div style={bottomStyle}>
+				<RouteForm data={edge} onClick={this.handleRouteEvent} />
+				<div style={articleStyle}>
 					<PositionTable positions={places} onChange={this.handleMapEvent} />
-					<RouteForm data={edge} onClick={this.handleRouteEvent} />
 				</div>
 			</div>
 		);
