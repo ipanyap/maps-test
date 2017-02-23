@@ -1,1 +1,1 @@
-web: npm run prod
+web: npm uninstall; npm install; npm run prod
