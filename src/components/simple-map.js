@@ -6,8 +6,10 @@ export default class SimpleMap extends Component {
 	constructor(props){
         super(props);
 		
+		this.axios = require('axios');
 		this.markers = [];
 		this.addMarker = this.addMarker.bind(this);
+		this.putMarker = this.putMarker.bind(this);
 		this.handleAddMarker = this.handleAddMarker.bind(this);
 		this.calculateNewRoute = this.calculateNewRoute.bind(this);
     };
@@ -21,19 +23,39 @@ export default class SimpleMap extends Component {
 			zoom: 11
 		});
 		
-		this.props.data.places.map((position) => {
+		/*this.props.data.places.map((position) => {
 			var marker = new google.maps.Marker({
 				position: position,
 				map: this.map
 			});
 			this.markers.push(marker);
-		});
+		});*/
 		
-		google.maps.event.addListener(this.map, 'click', this.addMarker);
+		google.maps.event.addListener(this.map, 'click', this.putMarker);
 		
 		this.directionService = new google.maps.DirectionsService();
 		this.directionDisplay = new google.maps.DirectionsRenderer();
 		this.directionDisplay.setMap(this.map);
+		
+		this.axios.get('/view', {}).then((res) => {
+			if(res.status === 200) {
+				res.data.map((position) => {
+					var e = { latLng: new google.maps.LatLng(position.lat, position.lng) };
+					this.addMarker(e);
+				});
+			}
+		});
+	};
+	
+	putMarker(event) {
+		this.axios.post('/add', {
+			lat: event.latLng.lat(),
+			lng: event.latLng.lng()
+		}).then((res) => {
+			if(res.status === 200) {
+				this.addMarker(event);
+			}
+		});
 	};
 	
 	addMarker(event) {

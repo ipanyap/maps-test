@@ -14,6 +14,7 @@ export default class IndexPage extends Component {
 			newRoute: false
 		};
 		
+		this.axios = require('axios');
 		this.handleMapEvent = this.handleMapEvent.bind(this);
 		this.handleRouteEvent = this.handleRouteEvent.bind(this);
 	};
@@ -32,14 +33,18 @@ export default class IndexPage extends Component {
 			var index = places.indexOf(e.position);
 			if(index > -1) {
 				if(e.type === 'delete') {
-					var origin = (this.state.origin === e.position) ? null : this.state.origin;
-					var dest = (this.state.destination === e.position) ? null : this.state.destination;
-					places.splice(index, 1);
-					this.setState((prevState, props) => ({
-						places: places,
-						origin: origin,
-						destination: dest
-					}));
+					this.axios.post('/delete', e.position).then((res) => {
+						if(res.status === 200) {
+							var origin = (this.state.origin === e.position) ? null : this.state.origin;
+							var dest = (this.state.destination === e.position) ? null : this.state.destination;
+							places.splice(index, 1);
+							this.setState((prevState, props) => ({
+								places: places,
+								origin: origin,
+								destination: dest
+							}));
+						}
+					});
 				}
 				else if(e.type === 'origin') {
 					this.setState((prevState, props) => ({
